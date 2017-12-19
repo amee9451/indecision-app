@@ -4,10 +4,12 @@ import Header from './Header';
 import Action from './Action';
 import Options from './Options';
 import AddOption from './AddOption';
+import DecisionModal from './DecisionModal';
 
 class IndecisionApp extends React.Component {
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
 
     resetOptions = () => {
@@ -33,7 +35,11 @@ class IndecisionApp extends React.Component {
         let index = Math.floor(Math.random() * this.state.options.length);
         let option = this.state.options[index];
 
-        alert (option);
+        this.setState(() => ({selectedOption: option}));
+    };
+
+    clearDecision = () => {
+        this.setState(() => ({selectedOption: undefined}));
     };
 
     // This is a lifecycle method
@@ -84,6 +90,7 @@ class IndecisionApp extends React.Component {
                 <AddOption 
                     addOption={this.addOption} 
                 />
+                <DecisionModal selectedOption={this.state.selectedOption} clearDecision={this.clearDecision} />
             </div>
         );
     }
