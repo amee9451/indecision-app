@@ -17,5 +17,6 @@ module.exports = {
                 presets: ['env', 'react']
             }
         }]
-    }
+    },
+    devtool: 'cheap-module-eval-source-map'
 };
