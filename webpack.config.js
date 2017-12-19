@@ -28,8 +28,7 @@ module.exports = {
                 'css-loader',
                 'sass-loader'
             ],
-            test: /\.scss$/,
-            exclude: /node_modules/,
+            test: /\.s?css$/
         }]
     },
     devtool: 'cheap-module-eval-source-map',
