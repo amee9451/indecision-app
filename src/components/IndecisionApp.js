@@ -6,18 +6,35 @@ import Options from './Options';
 import AddOption from './AddOption';
 
 class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
+    state = {
+        options: []
+    };
 
-        this.resetOptions = this.resetOptions.bind(this);
-        this.addOption = this.addOption.bind(this);
-        this.decide = this.decide.bind(this);
-        this.deleteOption = this.deleteOption.bind(this);
+    resetOptions = () => {
+        this.setState(() => ({ options: [] }));
+    };
 
-        this.state = {
-            options: []
-        };
-    }
+    deleteOption = (optionToDelete) => {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((option) => option !== optionToDelete)
+        }));
+    };
+
+    addOption = (option) => {
+        if (!option)
+            return 'Enter valid value to add item';
+        else if (this.state.options.indexOf(option) > -1)
+            return 'This option already exists';
+        
+        this.setState((prevState) => ({ options: prevState.options.concat(option) }));
+    };
+
+    decide = () => {
+        let index = Math.floor(Math.random() * this.state.options.length);
+        let option = this.state.options[index];
+
+        alert (option);
+    };
 
     // This is a lifecycle method
     componentDidMount() {
@@ -45,32 +62,6 @@ class IndecisionApp extends React.Component {
     // This is yet another lifecycle method
     componentWillUnmount() {
         console.log('componentWillUnmount');
-    }
-
-    resetOptions() {
-        this.setState(() => ({ options: [] }));
-    }
-
-    deleteOption(optionToDelete) {
-        this.setState((prevState) => ({
-            options: prevState.options.filter((option) => option !== optionToDelete)
-        }));
-    }
-
-    addOption(option) {
-        if (!option)
-            return 'Enter valid value to add item';
-        else if (this.state.options.indexOf(option) > -1)
-            return 'This option already exists';
-        
-        this.setState((prevState) => ({ options: prevState.options.concat(option) }));
-    }
-
-    decide(){
-        let index = Math.floor(Math.random() * this.state.options.length);
-        let option = this.state.options[index];
-
-        alert (option);
     }
 
     render () {
