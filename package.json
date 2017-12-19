@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server --port=8081 ./public",
-    "build": "webpack --watch"
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -16,7 +17,8 @@
     "babel-preset-react": "^6.24.1",
     "live-server": "^1.2.0",
     "validator": "^9.2.0",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "react": "^16.2.0",
