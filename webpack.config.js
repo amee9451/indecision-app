@@ -10,15 +10,17 @@ module.exports = {
     },
     module: {
         rules: [{
-            loader: 'babel-loader',
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    presets: ['env', 'react'],
+                    plugins: [
+                        "transform-class-properties"
+                    ]
+                }
+            }],
             test: /\.js$/,
-            exclude: /node_modules/,
-            options: {
-                presets: ['env', 'react'],
-                plugins: [
-                    "transform-class-properties"
-                ]
-            }
+            exclude: /node_modules/
         }]
     },
     devtool: 'cheap-module-eval-source-map',
